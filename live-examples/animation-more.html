@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+
+    <link rel="stylesheet" media="all" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/css/bootstrap.min.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script src="../js/jquery.js" data-main="main.js"></script>
+
+    <script>
+        $(function(){
+
+            $('.button-one').on('click', function(){
+                var that = $('.content');
+                that.animate({
+                    height: 350,
+                    width: 250,
+                    opacity: 0.5,
+                    fontSize: '300px'
+                }, 500, "linear", function() {
+                    console.log('animation complete!')
+                }).animate({opacity: 0.0}, 500)
+                  .animate({opacity: 1.0}, 500)
+                  .animate({opacity: 0.5}, 500);
+            });
+
+            var move = false, x = 0, y = 0, x_ = 0, y_ = 0;
+
+            $('.content').on('mousedown', function(evt){
+                console.log(evt.pageY)
+                move = true;
+            });
+
+            //var express = function(){};
+
+            //express.prototype.me = function(){}
+            //express.prototype.you = function(){}
+
+            //var obj = new express();
+
+            $('.content').on('mouseup', function(evt){
+                // ping back...
+                var that = $(this);
+                that.animate({
+                    top: x_,
+                    left: y_
+                });
+                move = false;
+            });
+
+            $('.content').on('mousemove', function(evt){
+                if(move === true){
+                    console.log(evt.pageY)
+                    var that = $(this);
+                    if(x_ === 0 && y_ === 0){
+                        x_ = evt.pageY-(that.height()/2);
+                        y_ = evt.pageX-(that.width()/2);
+                    }
+                    x = evt.pageY-(that.height()/2);
+                    y = evt.pageX-(that.width()/2);
+                    that.css({top: x, left: y, position: 'absolute'})
+                }
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+
+<div class="container">
+    <h4>More Animations</h4>
+    <a href="#" class="button-one">show content</a><br />
+    <div class="content" style="width:0; height: 0px; overflow:hidden; font-size: 2px; line-height: 250px">
+        <p>@</p>
+    </div>
+
+</div>
+
+</body>
+</html>

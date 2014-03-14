@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+
+    <link rel="stylesheet" media="all" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/css/bootstrap.min.css" />
+
+    <script src="../js/jquery.js" data-main="main.js"></script>
+
+    <style>
+
+        button {margin: 10px;}
+
+        .box {
+            margin: 10px;
+            border: 1px solid grey;
+            width: 200px;
+        }
+
+        .blue {
+            background-color: blue;
+            color: white;
+        }
+
+        .red {
+            background-color: red;
+            color: white;
+        }
+
+    </style>
+
+    <script>
+        $(function(){
+
+            $('.myDetail p').on('click', function(){
+                alert('my name is ' + $(this).html())
+            })
+
+            var detail;
+            $('a.button').on('click', function(){
+                var that = $(this); // grab the JQ object
+                if(detail){
+                    detail.appendTo('.myDetail'); // append detail to container
+                    detail = null;
+                    that.html('remove');
+                }else{
+                    detail = $('.myDetail p').detach(); // detach element from dom, not the event handler
+                    that.html('add');
+                } return false;
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+<div class="container">
+    <h4>Detach elements</h4>
+    <div class="myDetail">
+        <p>Foo bar - click me, I can shout!</p>
+    </div>
+    <a href="#" class="button">remove</a>
+<div>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+
+    <link rel="stylesheet" media="all" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/css/bootstrap.min.css" />
+
+    <script src="../js/jquery.js" data-main="main.js"></script>
+
+    <script>
+        $(function(){
+
+            $('.content').hide();
+
+            $('.button-one').on('click.menu', function(){
+                $('.content').show('fast', function(){
+                    console.log('animation complete!');
+                });
+            });
+
+            $('.button-two').on('click.menu', function(){
+                $('.content').hide(2000, function(){
+                    console.log('animation complete!')
+                })
+            });
+
+            $('.button-three').on('click.menu', function(){
+                $('.content').show('slow');
+            });
+
+            $('.button-four').on('click', function(){
+                $('.content').slideUp();
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+
+<div class="container">
+    <h4>Basic Animations</h4>
+    <div class="content">
+        <p>I am some content</p>
+        <p>I am some content</p>
+        <p>I am some content</p>
+        <p>I am some content</p>
+    </div>
+    <a href="#" class="button-one">show fast</a><br />
+    <a href="#" class="button-two">hide 2000ms</a><br />
+    <a href="#" class="button-three">show slow</a><br />
+    <a href="#" class="button-four">slide up</a>
+</div>
+
+</body>
+</html>
